@@ -17,7 +17,36 @@ spec:
       - name: ghcr-login-secret
       containers:
       - name: deo-backend
-        image: ghcr.io/jkarder/deo-webapp-backend:latest
+        image: ghcr.io/jkarder/deo-webapp-backend:v3.1
         args: ["--urls", "http://*:3000"]
         ports:
         - containerPort: 3000
+
+
+# previous lesson:
+# kubectl create namespace deo
+# kubectl apply -f .\deo-frontend-svc.yaml
+# kubectl apply -f .\deo-frontend-dep.yaml
+# kubectl apply -f .\deo-backend-svc.yaml
+# kubectl apply -f .\deo-backend-dep.yaml
+
+
+#kubectl create namespace argocd
+#kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+#kubectl patch svc argocd-server -n argocd -p '{"spec": { "type": "LoadBalancer"}}'
+#kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+#argocd admin initial-password -n argocd
+#LGE89eQDs8pKXlU2
+#argocd login localhost:8080
+#argocd account update-password
+#admin123
+#kubectl config set-context --current --namespace=argocd
+#kubectl create namespace deo
+#argocd app create deo-webapp --repo https://github.com/maxtuec/deo-webapp.git --path .infrastructure --dest-server https://kubernetes.default.svc --dest-namespace deo 
+#argocd app sync deo-webapp
+
+#git tag -a v3.1 -m 'Add version 3.1'
+#git push
+#git push origin v3.1
