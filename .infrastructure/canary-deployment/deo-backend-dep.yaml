@@ -35,3 +35,7 @@ spec:
       targetPort: 3000
   selector:
     app: deo-backend
+
+# kubectl get pods -n ingress-nginx
+# kubectl.exe logs -f -n ingress-nginx ingress-nginx-controller-6568cc55cd-vtddt
+# kubectl apply -f ./deo-frontend-ingress-prod.yaml -n deo
